@@ -1,6 +1,6 @@
-import { ExistsCpfException } from "../../../common/errors/ExistsCpfException";
-import { InvalidCpfException } from "../../../common/errors/InvalidCpfException";
-import { Either } from "../../../common/errors/either";
+import { ExistsCpfException } from "../../../presentation/errors/ExistsCpfException";
+import { InvalidCpfException } from "../../../presentation/errors/InvalidCpfException";
+import { Either } from "../../../presentation/errors/either";
 import { ICpf } from "../cpf.entity.interface";
 import { ICpfRepository } from "../cpf.repository.interface";
 import { ICpfValidator } from "../cpf.validator.interface";

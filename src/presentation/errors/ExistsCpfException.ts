@@ -1,13 +1,13 @@
-export class InvalidCpfException extends Error {
+export class ExistsCpfException extends Error {
 	private _message: string;
 	private _statusCode: number;
 	private _type: string;
 
 	constructor() {
-		super("CPF is not valid");
-		this._message = "CPF is not valid";
+		super("CPF already exists");
+		this._message = "CPF already exists";
 		this._statusCode = 400;
-		this._type = this.name;
+		this._type = "ExistsCpfException";
 	}
 
 	get message() {

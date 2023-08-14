@@ -7,7 +7,7 @@ export class NotFoundCpfException extends Error {
 		super("CPF not found");
 		this._message = "CPF not found";
 		this._statusCode = 400;
-		this._type = this.name;
+		this._type = "InvalidCpfException";
 	}
 
 	get message() {

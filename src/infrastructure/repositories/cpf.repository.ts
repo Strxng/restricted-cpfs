@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 import { ICpf } from "../../domain/interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../../domain/interfaces/cpf.repository.interface";
 import { CpfEntity } from "../entities/cpf.entity";
+import {v4 as uuidV4} from "uuid";
 
 export class CpfRepository implements ICpfRepository {
 	private readonly repo: Repository<CpfEntity>;
@@ -11,6 +12,8 @@ export class CpfRepository implements ICpfRepository {
 	}
 
 	async save (cpf: ICpf): Promise<ICpf> {
+		cpf.id = uuidV4();
+		
 		const createdCpf = this.repo.create(cpf);
 		await this.repo.save(createdCpf);
 		return createdCpf;

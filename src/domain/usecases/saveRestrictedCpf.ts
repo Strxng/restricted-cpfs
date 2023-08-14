@@ -1,6 +1,6 @@
-import { ExistsCpfException } from "../../common/errors/ExistsCpfException";
-import { InvalidCpfException } from "../../common/errors/InvalidCpfException";
-import { Either, left, right } from "../../common/errors/either";
+import { ExistsCpfException } from "../../presentation/errors/ExistsCpfException";
+import { InvalidCpfException } from "../../presentation/errors/InvalidCpfException";
+import { Either, left, right } from "../../presentation/errors/either";
 import { ICpf } from "../interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
 import { ICpfValidator } from "../interfaces/cpf.validator.interface";
@@ -18,12 +18,12 @@ export class SaveRestrictedCpf implements ISaveRestrictedCpf {
 	async execute (cpf: string): Promise<Either<InvalidCpfException | ExistsCpfException, ICpf>> {
 		const isValidCpf = this.cpfValidator.validate(cpf);
 		if(!isValidCpf){
-			left(new InvalidCpfException());
+			return left(new InvalidCpfException());
 		}
 
 		const existingCpf = await this.cpfRepository.findOne(cpf);
 		if(existingCpf){
-			left(new ExistsCpfException());
+			return left(new ExistsCpfException());
 		}
 
 		const createdCpf = await this.cpfRepository.save({

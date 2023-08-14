@@ -24,6 +24,7 @@ export class CreateCpfs1692032102266 implements MigrationInterface {
 					{
 						name: "deleted_at",
 						type: "timestamp",
+						isNullable: true,
 					},
 				],
 			}),
