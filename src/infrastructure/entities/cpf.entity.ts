@@ -1,9 +1,12 @@
-import { CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { ICpf } from "../../domain/interfaces/cpf.entity.interface";
 
 @Entity({ name: "cpfs" })
 export class CpfEntity implements ICpf {
-	@PrimaryColumn({ type: "varchar" })
+	@PrimaryColumn({ type: "uuid" })
+		id?: string;
+
+	@Column({ type: "varchar" })
 		cpf!: string;
 
 	@CreateDateColumn({ name: "created_at", type: "timestamptz" })

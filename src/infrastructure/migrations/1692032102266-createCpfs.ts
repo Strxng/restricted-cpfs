@@ -7,9 +7,13 @@ export class CreateCpfs1692032102266 implements MigrationInterface {
 				name: "cpfs",
 				columns: [
 					{
+						name: "id",
+						type: "uuid",
+						isPrimary: true,
+					},
+					{
 						name: "cpf",
 						type: "varchar",
-						isUnique: true,
 					},
 					{
 						name: "created_at",

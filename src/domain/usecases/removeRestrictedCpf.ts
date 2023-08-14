@@ -22,7 +22,8 @@ export class RemoveRestrictedCpf implements IRemoveRestrictedCpf {
 				return left(new InvalidCpfException());
 			}
 
-			const existingCpf = this.cpfRepository.findOne(cpf);
+			const existingCpf = await this.cpfRepository.findOne(cpf);
+
 			if(!existingCpf){
 				return left(new NotFoundCpfException());
 			}
@@ -30,6 +31,7 @@ export class RemoveRestrictedCpf implements IRemoveRestrictedCpf {
 			await this.cpfRepository.remove(cpf);
 			return right(null);
 		} catch (e) {
+			console.log(e);
 			return left(new ServerException());
 		}
 	}

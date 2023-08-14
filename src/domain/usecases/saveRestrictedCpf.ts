@@ -36,6 +36,7 @@ export class SaveRestrictedCpf implements ISaveRestrictedCpf {
 
 			return right(createdCpf);
 		} catch (e) {
+			console.log(e);
 			return left(new ServerException());
 		}
 	}
