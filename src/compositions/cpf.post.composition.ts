@@ -1,5 +1,5 @@
-import { ICpfPostComposition } from "../domain/compositions/cpf.post.composition.interface";
-import { ICpfPostRouter } from "../domain/routers/cpf.post.router.interface";
+import { ICpfPostComposition } from "../domain/interfaces/compositions/cpf.post.composition.interface";
+import { ICpfPostRouter } from "../domain/interfaces/routers/cpf.post.router.interface";
 import { SaveRestrictedCpf } from "../domain/usecases/saveRestrictedCpf";
 import { databaseConnection } from "../infrastructure/database.connection";
 import { CpfEntity } from "../infrastructure/entities/cpf.entity";

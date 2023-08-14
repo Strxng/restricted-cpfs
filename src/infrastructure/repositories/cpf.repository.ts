@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 import { ICpf } from "../../domain/interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../../domain/interfaces/cpf.repository.interface";
 import { CpfEntity } from "../entities/cpf.entity";
-import {v4 as uuidV4} from "uuid";
 
 export class CpfRepository implements ICpfRepository {
 	private readonly repo: Repository<CpfEntity>;
@@ -12,10 +11,9 @@ export class CpfRepository implements ICpfRepository {
 	}
 
 	async save (cpf: ICpf): Promise<ICpf> {
-		cpf.id = uuidV4();
-		
 		const createdCpf = this.repo.create(cpf);
 		await this.repo.save(createdCpf);
+		delete createdCpf.deletedAt;
 		return createdCpf;
 	}
 
@@ -24,12 +22,27 @@ export class CpfRepository implements ICpfRepository {
 	}
 
 	async findOne (cpf: string): Promise<ICpf | null> {
-		const findedCpf = await this.repo.findOne({where: {cpf: cpf}});
+		const findedCpf = await this.repo.findOne({
+			where: {
+				cpf: cpf
+			},
+			select: {
+				cpf: true, 
+				createdAt: true
+			}
+		});
+
 		return findedCpf;
 	}
 
 	async findAll (): Promise<ICpf[]> {
-		const cpfs = await this.repo.find();
+		const cpfs = await this.repo.find({
+			select: {
+				cpf: true,
+				createdAt: true,
+			}
+		});
+
 		return cpfs;
 	}
 }
