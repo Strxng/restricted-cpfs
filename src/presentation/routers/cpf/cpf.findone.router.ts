@@ -7,8 +7,8 @@ import { validate } from "class-validator";
 export class CpfFindOneRouter implements IRouter {
 	private readonly findOneRestrictedCpf: IFindOneRestrictedCpf;
 
-	constructor(findRestrictedCpf: IFindOneRestrictedCpf){
-		this.findOneRestrictedCpf = findRestrictedCpf;
+	constructor(findOneRestrictedCpf: IFindOneRestrictedCpf){
+		this.findOneRestrictedCpf = findOneRestrictedCpf;
 	}
 
 	async route (req: Request, res: Response): Promise<void> {

@@ -5,9 +5,9 @@ import { ServerException } from "../../presentation/errors/ServerException";
 import { ICpf } from "../interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
 import { ICpfValidator } from "../interfaces/cpf.validator.interface";
-import { IFindRestrictedCpf, IFindRestrictedCpfConstructor } from "../interfaces/usecases/findRestrictedCpf.interface";
+import { IFindOneRestrictedCpf, IFindRestrictedCpfConstructor } from "../interfaces/usecases/findRestrictedCpf.interface";
 
-export class FindRestrictedCpf implements IFindRestrictedCpf {
+export class FindOneRestrictedCpf implements IFindOneRestrictedCpf {
 	private readonly cpfRepository: ICpfRepository;
 	private readonly cpfValidator: ICpfValidator;
 

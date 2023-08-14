@@ -1,6 +1,6 @@
 import { IComposition } from "../domain/interfaces/composition.interface";
 import { IRouter } from "../domain/interfaces/router.interface";
-import { FindRestrictedCpf } from "../domain/usecases/findRestrictedCpf";
+import { FindOneRestrictedCpf } from "../domain/usecases/findOneRestrictedCpf";
 import { databaseConnection } from "../infrastructure/database.connection";
 import { CpfEntity } from "../infrastructure/entities/cpf.entity";
 import { CpfRepository } from "../infrastructure/repositories/cpf.repository";
@@ -14,8 +14,8 @@ export class CpfFindOneComposititon implements IComposition {
 		const cpfValidator = new CpfValidator();
 		const cpfRepository = new CpfRepository(repository);
 
-		const findRestrictedCpf = new FindRestrictedCpf({ cpfValidator, cpfRepository });
+		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfValidator, cpfRepository });
 
-		return new CpfFindOneRouter(findRestrictedCpf);
+		return new CpfFindOneRouter(findOneRestrictedCpf);
 	}
 }
