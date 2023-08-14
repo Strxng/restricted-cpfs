@@ -5,7 +5,7 @@ import { databaseConnection } from "../infrastructure/database.connection";
 import { CpfEntity } from "../infrastructure/entities/cpf.entity";
 import { CpfRepository } from "../infrastructure/repositories/cpf.repository";
 import { CpfRemoveRouter } from "../presentation/routers/cpf/cpf.remove.router";
-import { CpfValidator } from "../presentation/utils/cpf.validator";
+import { CpfValidator } from "../utils/cpf.validator";
 
 export class CpfRemoveComposititon implements IComposition {
 	compose (): IRouter {
