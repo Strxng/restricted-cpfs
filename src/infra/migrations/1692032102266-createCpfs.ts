@@ -21,6 +21,10 @@ export class CreateCpfs1692032102266 implements MigrationInterface {
 						type: "timestamp",
 						default: "now()",
 					},
+					{
+						name: "deleted_at",
+						type: "timestamp",
+					},
 				],
 			}),
 		);
