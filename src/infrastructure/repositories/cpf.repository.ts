@@ -17,8 +17,8 @@ export class CpfRepository implements ICpfRepository {
 		return createdCpf;
 	}
 
-	async remove (cpfId: string): Promise<void> {
-		await this.repo.softDelete(cpfId);
+	async remove (cpf: string): Promise<void> {
+		await this.repo.softDelete(cpf);
 	}
 
 	async findOne (cpf: string): Promise<ICpf | null> {
