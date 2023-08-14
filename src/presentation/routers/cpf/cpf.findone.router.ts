@@ -1,19 +1,21 @@
 import { Request, Response } from "express";
-import { ISaveRestrictedCpf } from "../../../domain/interfaces/usecases/saveRestrictedCpf.interface";
+import { IRouter } from "../../../domain/interfaces/router.interface";
+import { IFindOneRestrictedCpf } from "../../../domain/interfaces/usecases/findRestrictedCpf.interface";
 import { CpfDto } from "../../../infrastructure/dtos/cpf.dto";
 import { validate } from "class-validator";
-import { IRouter } from "../../../domain/interfaces/router.interface";
 
-export class CpfPostRouter implements IRouter {
-	private readonly saveRestrictedCpf: ISaveRestrictedCpf;
+export class CpfFindOneRouter implements IRouter {
+	private readonly findOneRestrictedCpf: IFindOneRestrictedCpf;
 
-	constructor(saveRestrictedCpf: ISaveRestrictedCpf){
-		this.saveRestrictedCpf = saveRestrictedCpf;
+	constructor(findRestrictedCpf: IFindOneRestrictedCpf){
+		this.findOneRestrictedCpf = findRestrictedCpf;
 	}
 
 	async route (req: Request, res: Response): Promise<void> {
 		const cpfDto = new CpfDto();
-		cpfDto.cpf = req.body.cpf.replaceAll(".", "").replaceAll("-", "");
+		const cpf = req.params.cpf as string;
+
+		cpfDto.cpf = cpf.replaceAll(".", "").replaceAll("-", "");
 
 		const errors = await validate(cpfDto);
 
@@ -32,7 +34,7 @@ export class CpfPostRouter implements IRouter {
 			});
 		}
 
-		const response = await this.saveRestrictedCpf.execute(cpfDto.cpf);
+		const response = await this.findOneRestrictedCpf.execute(cpfDto.cpf);
 
 		if(response.isLeft()){
 			res.status(response.value.statusCode).json({

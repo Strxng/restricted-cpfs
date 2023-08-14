@@ -1,24 +1,21 @@
 import "reflect-metadata";
 import "dotenv/config";
 
+import { databaseConnection } from "./infrastructure/database.connection";
+import { router } from "./routes";
+
 import express from "express";
 import cors from "cors";
-import { databaseConnection } from "./infrastructure/database.connection";
-import { CpfPostComposititon } from "./compositions/cpf.post.composition";
-import { CpfGetComposititon } from "./compositions/cpf.get.composition";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(router);
 
-app.post("/cpf", (req, res) => new CpfPostComposititon().compose().route(req, res));
-
-app.get("/cpf/:cpf", (req, res) => new CpfGetComposititon().compose().route(req, res));
+const port = 8080;
 
 databaseConnection
 	.initialize()
-	.then(() => {
-		app.listen(8080, () => console.log(`server runing at port ${8080}`));
-	})
+	.then(() => app.listen(port, () => console.log(`Server runing at port ${port}`)))
 	.catch(err => console.log("Database connection failed", err));

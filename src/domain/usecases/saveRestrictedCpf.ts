@@ -1,5 +1,6 @@
 import { ExistsCpfException } from "../../presentation/errors/ExistsCpfException";
 import { InvalidCpfException } from "../../presentation/errors/InvalidCpfException";
+import { ServerException } from "../../presentation/errors/ServerException";
 import { Either, left, right } from "../../presentation/errors/either";
 import { ICpf } from "../interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
@@ -15,23 +16,27 @@ export class SaveRestrictedCpf implements ISaveRestrictedCpf {
 		this.cpfRepository = cpfRepository;
 	}
 
-	async execute (cpf: string): Promise<Either<InvalidCpfException | ExistsCpfException, ICpf>> {
-		const isValidCpf = this.cpfValidator.validate(cpf);
-		console.log(cpf);
+	async execute (cpf: string): Promise<Either<ServerException | InvalidCpfException | ExistsCpfException, ICpf>> {
+		try {
+			const isValidCpf = this.cpfValidator.validate(cpf);
+			console.log(cpf);
 
-		if(!isValidCpf){
-			return left(new InvalidCpfException());
+			if(!isValidCpf){
+				return left(new InvalidCpfException());
+			}
+
+			const existingCpf = await this.cpfRepository.findOne(cpf);
+			if(existingCpf){
+				return left(new ExistsCpfException());
+			}
+
+			const createdCpf = await this.cpfRepository.save({
+				cpf: cpf
+			});
+
+			return right(createdCpf);
+		} catch (e) {
+			return left(new ServerException());
 		}
-
-		const existingCpf = await this.cpfRepository.findOne(cpf);
-		if(existingCpf){
-			return left(new ExistsCpfException());
-		}
-
-		const createdCpf = await this.cpfRepository.save({
-			cpf: cpf
-		});
-
-		return right(createdCpf);
 	}
 }

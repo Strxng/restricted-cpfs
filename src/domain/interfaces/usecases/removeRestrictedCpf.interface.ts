@@ -1,16 +1,15 @@
-import { ExistsCpfException } from "../../../presentation/errors/ExistsCpfException";
 import { InvalidCpfException } from "../../../presentation/errors/InvalidCpfException";
+import { NotFoundCpfException } from "../../../presentation/errors/NotFoundCpfException";
 import { ServerException } from "../../../presentation/errors/ServerException";
 import { Either } from "../../../presentation/errors/either";
-import { ICpf } from "../cpf.entity.interface";
 import { ICpfRepository } from "../cpf.repository.interface";
 import { ICpfValidator } from "../cpf.validator.interface";
 
-export interface ISaveRestrictedCpf {
-  execute: (cpf: string) =>  Promise<Either<ServerException | InvalidCpfException | ExistsCpfException, ICpf>>
+export interface IRemoveRestrictedCpf {
+  execute: (cpf: string) =>  Promise<Either<ServerException | InvalidCpfException | NotFoundCpfException, null>>
 }
 
-export interface ISaveRestrictedCpfConstructor {
+export interface IRemoveRestrictedCpfConstructor {
   cpfRepository: ICpfRepository
   cpfValidator: ICpfValidator
 }
