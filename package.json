@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "start:dev": "tsx watch src/index.ts",
+    "start": "tsx src/server.ts",
+    "start:dev": "tsx watch src/server.ts",
     "test": "vitest",
     "build": "tsc",
-    "migration:run": "typeorm-ts-node-esm migration:run -d src/database/connection"
+    "migration:run": "typeorm-ts-node-esm migration:run -d src/infra/database.connection"
   },
   "keywords": [],
   "author": "",
