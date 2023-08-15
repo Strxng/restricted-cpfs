@@ -15,8 +15,8 @@ describe("Tests for findAllRestrictedCpf usecase", () => {
 			saveFn: async () => ({ id: "123", cpf: "123", createdAt: new Date() }),
 		});
 
-		const findAllRestrictedCpf = new FindAllRestrictedCpf({ cpfRepository });
-		const response = await findAllRestrictedCpf.execute();
+		const sut = new FindAllRestrictedCpf({ cpfRepository });
+		const response = await sut.execute();
 
 		expect(response.value).toEqual(cpfs);
 		expect(typeof response.value).toBe(typeof cpfs);
@@ -43,8 +43,8 @@ describe("Tests for findAllRestrictedCpf usecase", () => {
 			saveFn: async () => ({ id: "123", cpf: "123", createdAt: new Date() }),
 		});
 
-		const findAllRestrictedCpf = new FindAllRestrictedCpf({ cpfRepository });
-		const response = await findAllRestrictedCpf.execute();
+		const sut = new FindAllRestrictedCpf({ cpfRepository });
+		const response = await sut.execute();
 
 		expect(response.value).toEqual(cpfs);
 	});
@@ -59,8 +59,8 @@ describe("Tests for findAllRestrictedCpf usecase", () => {
 			saveFn: async () => ({ id: "123", cpf: "123", createdAt: new Date() }),
 		});
 
-		const findAllRestrictedCpf = new FindAllRestrictedCpf({ cpfRepository });
-		const response = await findAllRestrictedCpf.execute();
+		const sut = new FindAllRestrictedCpf({ cpfRepository });
+		const response = await sut.execute();
 
 		expect(response.isLeft()).toBe(true);
 		expect(response.isRight()).toBe(false);
@@ -75,8 +75,8 @@ describe("Tests for findAllRestrictedCpf usecase", () => {
 			saveFn: async () => ({ id: "123", cpf: "123", createdAt: new Date() }),
 		});
 
-		const findAllRestrictedCpf = new FindAllRestrictedCpf({ cpfRepository });
-		const response = await findAllRestrictedCpf.execute();
+		const sut = new FindAllRestrictedCpf({ cpfRepository });
+		const response = await sut.execute();
 
 		expect(response.isLeft()).toBe(false);
 		expect(response.isRight()).toBe(true);

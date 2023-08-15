@@ -20,8 +20,8 @@ describe("Tests for removeRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const removeRestrictedCpf = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await removeRestrictedCpf.execute(cpfString);
+		const sut = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		if(response.isRight()){
 			expect(response.value).toBeNull();
@@ -40,8 +40,8 @@ describe("Tests for removeRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const removeRestrictedCpf = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await removeRestrictedCpf.execute("123");
+		const sut = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toBeInstanceOf(NotFoundCpfException);
 	});
@@ -58,8 +58,8 @@ describe("Tests for removeRestrictedCpf usecase", () => {
 			validateFn: () => false
 		});
 
-		const removeRestrictedCpf = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await removeRestrictedCpf.execute("123");
+		const sut = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toBeInstanceOf(InvalidCpfException);
 	});
@@ -78,8 +78,8 @@ describe("Tests for removeRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const removeRestrictedCpf = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await removeRestrictedCpf.execute(cpfString);
+		const sut = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		expect(response.isRight()).toBe(true);
 	});
@@ -98,8 +98,8 @@ describe("Tests for removeRestrictedCpf usecase", () => {
 			validateFn: () => false
 		});
 
-		const removeRestrictedCpf = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await removeRestrictedCpf.execute(cpfString);
+		const sut = new RemoveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		expect(response.isLeft()).toBe(true);
 	});

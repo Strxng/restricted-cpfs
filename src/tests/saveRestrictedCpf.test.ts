@@ -21,8 +21,8 @@ describe("Tests for saveRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const saveRestrictedCpf = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await saveRestrictedCpf.execute(cpfString);
+		const sut = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		expect(response.isRight()).toBe(true);
 
@@ -43,8 +43,8 @@ describe("Tests for saveRestrictedCpf usecase", () => {
 			validateFn: () => false
 		});
 
-		const saveRestrictedCpf = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await saveRestrictedCpf.execute("123");
+		const sut = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toBeInstanceOf(InvalidCpfException);
 	});
@@ -63,8 +63,8 @@ describe("Tests for saveRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const saveRestrictedCpf = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await saveRestrictedCpf.execute("123");
+		const sut = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toBeInstanceOf(ExistsCpfException);
 	});
@@ -84,8 +84,8 @@ describe("Tests for saveRestrictedCpf usecase", () => {
 		});
 
 
-		const saveRestrictedCpf = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await saveRestrictedCpf.execute(cpfString);
+		const sut = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		expect(response.isRight()).toBe(true);
 	});
@@ -104,8 +104,8 @@ describe("Tests for saveRestrictedCpf usecase", () => {
 			validateFn: () => false
 		});
 
-		const saveRestrictedCpf = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await saveRestrictedCpf.execute(cpfString);
+		const sut = new SaveRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute(cpfString);
 
 		expect(response.isLeft()).toBe(true);
 	});

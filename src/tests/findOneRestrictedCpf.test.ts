@@ -20,8 +20,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toBeInstanceOf(NotFoundCpfException);
 	});
@@ -44,8 +44,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.value).toEqual(cpf);
 	});
@@ -62,8 +62,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.isLeft()).toBe(true);
 		expect(response.isRight()).toBe(false);
@@ -88,8 +88,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => true
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.isLeft()).toBe(false);
 		expect(response.isRight()).toBe(true);
@@ -108,8 +108,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => {throw new Error();}
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.isLeft()).toBe(true);
 		expect(response.isRight()).toBe(false);
@@ -128,8 +128,8 @@ describe("Tests for findOneRestrictedCpf usecase", () => {
 			validateFn: () => false
 		});
 
-		const findOneRestrictedCpf = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
-		const response = await findOneRestrictedCpf.execute("123");
+		const sut = new FindOneRestrictedCpf({ cpfRepository, cpfValidator });
+		const response = await sut.execute("123");
 
 		expect(response.isLeft()).toBe(true);
 		expect(response.isRight()).toBe(false);
