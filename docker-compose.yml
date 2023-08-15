@@ -10,6 +10,8 @@ services:
     networks:
       - restricted-cpfs-network
     command: ./docker-entrypoint.sh
+    depends_on:
+      - db
   db:
     image: postgres:latest
     environment:
