@@ -1,1 +1,1 @@
-docker build -t restricted-cpfs .
+docker-compose up

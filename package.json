@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsx src/server.ts",
     "start:dev": "tsx watch src/server.ts",
+    "start:prod": "node dist/server.js",
     "test": "vitest",
     "build": "tsc",
     "migration:run": "typeorm-ts-node-esm migration:run -d src/infrastructure/database.connection"
