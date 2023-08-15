@@ -6,4 +6,7 @@ export const databaseConnection = new DataSource({
 	url: process.env.TYPEORM_URL,
 	migrations: [`${__dirname}/migrations/*.ts`],
 	entities: [`${__dirname}/entities/*.{ts,js}`],
+	extra: {
+		ssl: true
+	}
 } as DataSourceOptions);

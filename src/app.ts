@@ -1,7 +1,6 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import express, { Express } from "express";
 import { ExpressInitializer, SwaggerInitializer, SwaggerEndpoint, Title, Version } from "express-swagger-autoconfigure";
-import { CpfController } from "./controllers/cpf.controller";
+import { CpfController } from "./presentation/controllers/cpf.controller";
 
 import cors from "cors";
 

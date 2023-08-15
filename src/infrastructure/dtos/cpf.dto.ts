@@ -1,4 +1,3 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
 import { IsString } from "class-validator";
 import { ICpf } from "../../domain/interfaces/cpf.entity.interface";
 
