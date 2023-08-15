@@ -31,7 +31,6 @@ export class RemoveRestrictedCpf implements IRemoveRestrictedCpf {
 			await this.cpfRepository.remove(cpf);
 			return right(null);
 		} catch (e) {
-			console.log(e);
 			return left(new ServerException());
 		}
 	}

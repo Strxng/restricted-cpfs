@@ -19,7 +19,6 @@ export class SaveRestrictedCpf implements ISaveRestrictedCpf {
 	async execute (cpf: string): Promise<Either<ServerException | InvalidCpfException | ExistsCpfException, ICpf>> {
 		try {
 			const isValidCpf = this.cpfValidator.validate(cpf);
-			console.log(cpf);
 
 			if(!isValidCpf){
 				return left(new InvalidCpfException());
@@ -36,7 +35,6 @@ export class SaveRestrictedCpf implements ISaveRestrictedCpf {
 
 			return right(createdCpf);
 		} catch (e) {
-			console.log(e);
 			return left(new ServerException());
 		}
 	}
