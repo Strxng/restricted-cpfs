@@ -1,11 +1,11 @@
 import {describe, expect, it} from "vitest";
 import { ICpf } from "../domain/interfaces/cpf.entity.interface";
 import { CpfRepositoryToTest } from "./helpers/cpfRepository";
-import { ServerException } from "../presentation/errors/ServerException";
+import { ServerException } from "../utils/errors/ServerException";
 import { FindOneRestrictedCpf } from "../domain/usecases/findOneRestrictedCpf";
 import { CpfValidatorToTest } from "./helpers/cpfValidator";
-import { NotFoundCpfException } from "../presentation/errors/NotFoundCpfException";
-import { InvalidCpfException } from "../presentation/errors/InvalidCpfException";
+import { NotFoundCpfException } from "../utils/errors/NotFoundCpfException";
+import { InvalidCpfException } from "../utils/errors/InvalidCpfException";
 
 describe("Tests for findOneRestrictedCpf usecase", () => {
 	it("should returns a NotFoundException when not have a cpf equal on database", async () => {

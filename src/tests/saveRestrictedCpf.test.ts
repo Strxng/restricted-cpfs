@@ -1,10 +1,10 @@
 import {describe, expect, it} from "vitest";
 import { CpfRepositoryToTest } from "./helpers/cpfRepository";
-import { ServerException } from "../presentation/errors/ServerException";
+import { ServerException } from "../utils/errors/ServerException";
 import { SaveRestrictedCpf } from "../domain/usecases/saveRestrictedCpf";
 import { CpfValidatorToTest } from "./helpers/cpfValidator";
-import { InvalidCpfException } from "../presentation/errors/InvalidCpfException";
-import { ExistsCpfException } from "../presentation/errors/ExistsCpfException";
+import { InvalidCpfException } from "../utils/errors/InvalidCpfException";
+import { ExistsCpfException } from "../utils/errors/ExistsCpfException";
 
 describe("Tests for saveRestrictedCpf usecase", () => {
 	it("should returns a cpf when the save works well", async () => {

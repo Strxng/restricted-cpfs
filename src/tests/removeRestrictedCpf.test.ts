@@ -2,8 +2,8 @@ import {describe, expect, it} from "vitest";
 import { CpfRepositoryToTest } from "./helpers/cpfRepository";
 import { CpfValidatorToTest } from "./helpers/cpfValidator";
 import { RemoveRestrictedCpf } from "../domain/usecases/removeRestrictedCpf";
-import { NotFoundCpfException } from "../presentation/errors/NotFoundCpfException";
-import { InvalidCpfException } from "../presentation/errors/InvalidCpfException";
+import { NotFoundCpfException } from "../utils/errors/NotFoundCpfException";
+import { InvalidCpfException } from "../utils/errors/InvalidCpfException";
 
 describe("Tests for removeRestrictedCpf usecase", () => {
 	it("should returns null when the remove works well", async () => {

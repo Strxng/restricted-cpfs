@@ -1,5 +1,5 @@
-import { Either, left, right } from "../../presentation/errors/either";
-import { ServerException } from "../../presentation/errors/ServerException";
+import { Either, left, right } from "../../utils/errors/either";
+import { ServerException } from "../../utils/errors/ServerException";
 import { ICpf } from "../interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
 import { IFindAllRestrictedCpf, IFindAllRestrictedCpfConstructor } from "../interfaces/usecases/findAllRestrictedCpf.interface";

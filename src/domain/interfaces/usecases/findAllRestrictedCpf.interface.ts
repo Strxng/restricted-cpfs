@@ -1,5 +1,5 @@
-import { ServerException } from "../../../presentation/errors/ServerException";
-import { Either } from "../../../presentation/errors/either";
+import { ServerException } from "../../../utils/errors/ServerException";
+import { Either } from "../../../utils/errors/either";
 import { ICpf } from "../cpf.entity.interface";
 import { ICpfRepository } from "../cpf.repository.interface";
 

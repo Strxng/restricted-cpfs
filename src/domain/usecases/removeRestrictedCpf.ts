@@ -1,7 +1,7 @@
-import { Either, left, right } from "../../presentation/errors/either";
-import { InvalidCpfException } from "../../presentation/errors/InvalidCpfException";
-import { NotFoundCpfException } from "../../presentation/errors/NotFoundCpfException";
-import { ServerException } from "../../presentation/errors/ServerException";
+import { Either, left, right } from "../../utils/errors/either";
+import { InvalidCpfException } from "../../utils/errors/InvalidCpfException";
+import { NotFoundCpfException } from "../../utils/errors/NotFoundCpfException";
+import { ServerException } from "../../utils/errors/ServerException";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
 import { ICpfValidator } from "../interfaces/cpf.validator.interface";
 import { IRemoveRestrictedCpf, IRemoveRestrictedCpfConstructor } from "../interfaces/usecases/removeRestrictedCpf.interface";

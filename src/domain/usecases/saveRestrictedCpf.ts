@@ -1,7 +1,7 @@
-import { ExistsCpfException } from "../../presentation/errors/ExistsCpfException";
-import { InvalidCpfException } from "../../presentation/errors/InvalidCpfException";
-import { ServerException } from "../../presentation/errors/ServerException";
-import { Either, left, right } from "../../presentation/errors/either";
+import { ExistsCpfException } from "../../utils/errors/ExistsCpfException";
+import { InvalidCpfException } from "../../utils/errors/InvalidCpfException";
+import { ServerException } from "../../utils/errors/ServerException";
+import { Either, left, right } from "../../utils/errors/either";
 import { ICpf } from "../interfaces/cpf.entity.interface";
 import { ICpfRepository } from "../interfaces/cpf.repository.interface";
 import { ICpfValidator } from "../interfaces/cpf.validator.interface";

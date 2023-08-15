@@ -2,7 +2,7 @@ import {describe, expect, it} from "vitest";
 import { ICpf } from "../domain/interfaces/cpf.entity.interface";
 import { FindAllRestrictedCpf } from "../domain/usecases/findAllRestrictedCpf";
 import { CpfRepositoryToTest } from "./helpers/cpfRepository";
-import { ServerException } from "../presentation/errors/ServerException";
+import { ServerException } from "../utils/errors/ServerException";
 
 describe("Tests for findAllRestrictedCpf usecase", () => {
 	it("should returns an empty array when not have cpfs on database", async () => {
