@@ -1,2 +1,1 @@
-npm run migration:run
-npm run start:prod
+/usr/local/bin/npm run start:prod

@@ -9,10 +9,9 @@ services:
     environment:
       - TYPEORM_CONNECTION=postgres
       - TYPEORM_URL=postgresql://projectuser:1234@db:5432/restrictedcpfs
-      - TYPEORM_MIGRATIONS=src/database/migrations/*.ts
-      - TYPEORM_MIGRATIONS_DIR=src/database/migrations
     networks:
       - restricted-cpfs-network
+    command: ./docker-entrypoint.sh
   db:
     image: postgres:latest
     environment:
